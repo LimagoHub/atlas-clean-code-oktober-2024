@@ -27,18 +27,28 @@ namespace atlas::game {
 
         void humanturn() {
             if(isGameover()) return;
-
-            while(true) {
-                std::cout << "Es gibt " << stones << " Steine. Bitte nehmen Sie 1, 2 oder 3!" << std::endl;
-                std::cin >> turn;
-                if(isTurnValid()) break;
-                std::cout << " Ungueltiger Zug" << std::endl;
-            }
+            executeTurn();
             terminateTurn( "Player");
         }
 
 
 
+        void executeTurn()  {
+            do {
+                concreteHumanTurn();
+            }  while(playersTurnIsInvalid());
+        }
+
+        bool playersTurnIsInvalid()  {
+            if(isTurnValid()) return false;
+            std::cout << "Ungueltiger Zug!" << std::endl;
+            return true;
+        }
+
+        void concreteHumanTurn() {
+            std::cout << "Es gibt " << stones << " Steine. Bitte nehmen Sie 1, 2 oder 3!" << std::endl;
+            std::cin >> turn;
+        }
 
         void computerturn() {
             if(isGameover()) return;
