@@ -12,4 +12,9 @@ add_executable(NimGame main.cpp
         game/nimgame/player/NimGamePlayer.h
         game/nimgame/player/AbstractNimGamePlayer.h
         game/nimgame/player/HumanPlayer.h
-        game/nimgame/player/ComputerPlayer.h)
+        game/nimgame/player/ComputerPlayer.h
+        io/Writer.h
+        io/ConsoleWrite.h
+        game/player/Player.h
+        game/player/AbstractPlayer.h
+        game/AbstractGame.h)

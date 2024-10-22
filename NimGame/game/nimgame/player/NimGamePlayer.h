@@ -5,12 +5,11 @@
 #pragma once
 
 #include <string>
-
+#include "../../player/Player.h"
 namespace atlas::game::player {
-    class NimGamePlayer {
+    class NimGamePlayer: public Player<int,int>{
     public:
-        virtual ~NimGamePlayer();
-        virtual int doTurn(const int stones) const = 0;
-        virtual std::string getName() const = 0;
+        virtual ~NimGamePlayer()=default;
+
     };
 }
