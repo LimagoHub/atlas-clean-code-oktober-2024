@@ -21,11 +21,11 @@ namespace atlas::game {
 
 
         void playRound() {
-            humanturn();
+            playSingleTurn();
             computerturn();
         }
 
-        void humanturn() {
+        void playSingleTurn() {
             if(isGameover()) return;
             executeTurn();
             terminateTurn( "Player");
