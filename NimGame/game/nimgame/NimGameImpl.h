@@ -17,6 +17,8 @@ namespace atlas::game {
 
     private:
         int stones;
+        int turn;
+
 
         void playRound() {
             humanturn();
@@ -24,37 +26,49 @@ namespace atlas::game {
         }
 
         void humanturn() {
-            int turn;
+            if(isGameover()) return;
+
             while(true) {
                 std::cout << "Es gibt " << stones << " Steine. Bitte nehmen Sie 1, 2 oder 3!" << std::endl;
                 std::cin >> turn;
-                if(turn >= 1 && turn <= 3) break;
+                if(isTurnValid()) break;
                 std::cout << " Ungueltiger Zug" << std::endl;
             }
-            stones -= turn;
+            terminateTurn( "Player");
         }
+
+
+
 
         void computerturn() {
+            if(isGameover()) return;
             const int turns[] = {3,1,1,2};
 
-            if(isGameover()) {
-                std::cout << "Du Loser" << std::endl;
-                return;
-            }
-
-            if(stones == 1) {
-                std::cout << "Du hast nur Glueck gehabt" << std::endl;
-                stones -= 1;
-                return;
-            }
-            const int turn = turns[stones % 4];
+            turn = turns[stones % 4];
             std::cout << "Computer nimmt " << turn << " Steine." << std::endl;
-            stones -= turn;
+            terminateTurn("Computer");
         }
+
+        void terminateTurn(std::string playername) { // Integration
+            updateBoard();
+            printGameOverMessageWhenGameIsOver(playername);
+        }
+
+        void printGameOverMessageWhenGameIsOver(const std::string &playername) { // Operation
+            if(isGameover()) {
+                std::cout << playername << " hat verloren!" << std::endl;
+            }
+        }
+
+
+        // --------------- Implemetierungssumpf (sehr spezifisch)
+        void updateBoard() { stones -= turn; }
 
         bool isGameover() {
             return stones < 1;
         }
+
+        bool isTurnValid() const { return turn >= 1 && turn <= 3; }
     };
 
 }
