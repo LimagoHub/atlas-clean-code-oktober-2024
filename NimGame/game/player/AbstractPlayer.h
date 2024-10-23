@@ -15,9 +15,7 @@ namespace atlas::game::player {
 
 
 
-        ~AbstractPlayer() override {
-
-        }
+        ~AbstractPlayer() override = default;
 
         std::string getName() const override {
             return name;

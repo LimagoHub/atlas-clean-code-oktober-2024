@@ -12,9 +12,9 @@ namespace atlas::game{
     template< class BOARD, class TURN>
     class AbstractGame :public Game{
         using PLAYER = atlas::game::player::Player<BOARD,TURN>;
-    public:
+    protected:
         explicit AbstractGame(io::Writer &writer) : writer(writer) {}
-
+    public:
         void play() override {
             while( ! isGameover()) {
                 playRound();
@@ -62,7 +62,7 @@ namespace atlas::game{
             updateBoard();
             printGameOverMessageWhenGameIsOver();
         }
-
+        BOARD board;
 
         bool playersTurnIsInvalid()  {
             if(isTurnValid()) return false;
@@ -74,21 +74,21 @@ namespace atlas::game{
 
         void printGameOverMessageWhenGameIsOver() { // Operation
             if(isGameover()) {
-                print( currentPlayer->getName() + " hat verloren!\n");
+                print( currentPlayer_->getName() + " hat verloren!\n");
             }
         }
 
         void setCurrentPlayer(PLAYER *currentPlayer) {
-            AbstractGame::currentPlayer = currentPlayer;
+            currentPlayer_ = currentPlayer;
         }
 
         std::vector<PLAYER *> players;
 
-        PLAYER * currentPlayer;
+        PLAYER * currentPlayer_;
 
         atlas::io::Writer & writer;
 
-        BOARD board;
+
         TURN turn;
     protected:
 
@@ -117,16 +117,12 @@ namespace atlas::game{
         }
 
         PLAYER *getCurrentPlayer() const {
-            return currentPlayer;
+            return currentPlayer_;
         }
-
-
-
 
         const std::vector<PLAYER *> &getPlayers() const {
             return players;
         }
-
 
 
         virtual void print(std::string message) {

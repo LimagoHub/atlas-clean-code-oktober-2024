@@ -17,4 +17,5 @@ add_executable(NimGame main.cpp
         io/ConsoleWrite.h
         game/player/Player.h
         game/player/AbstractPlayer.h
-        game/AbstractGame.h)
+        game/AbstractGame.h
+        Schwein.h)

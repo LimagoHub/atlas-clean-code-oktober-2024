@@ -51,7 +51,8 @@ public class Schwein {
 	}
 
 	public void fuettern() {
-		setGewicht(getGewicht() + 1);
+
+        setGewicht(getGewicht() + 1);
 	}
 
 	@Override
