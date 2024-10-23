@@ -21,8 +21,6 @@ namespace atlas::collection {
             return data_;
         }
 
-
-
         auto getSize() -> size_t const {
             return size_;
         }

@@ -6,7 +6,7 @@
 
 #include <iostream>
 #include "AbstractVectorFactoryDecorator.h"
-#include "../../../time/impl/StopwatchImpl.h"
+#include "../../../time/Stopwatch.h"
 namespace atlas::collection {
 
     template<class T>
@@ -18,8 +18,9 @@ namespace atlas::collection {
         StopwatchPointer stopwatch_;
     public:
         //~VectorFactoryBenchmarkDecorator() override= default;
-        explicit VectorFactoryBenchmarkDecorator(VectorFactoryPointer vectorFactoryPointer_,
-                                                 StopwatchPointer stopwatch=std::make_unique<atlas::time::StopwatchImpl>())
+        explicit VectorFactoryBenchmarkDecorator(
+                VectorFactoryPointer vectorFactoryPointer_,
+                StopwatchPointer stopwatch=std::make_unique<atlas::time::Stopwatch>())
                 :AbstractVectorFactoryDecorator<T>{std::move(vectorFactoryPointer_)},stopwatch_{std::move(stopwatch)}{}
 
 

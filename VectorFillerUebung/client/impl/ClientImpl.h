@@ -3,8 +3,9 @@
 //
 #include <vector>
 #include <memory>
+#include <iostream>
 #include "../Client.h"
-#include "../../collection/VectorFactory.h"
+#include "../../collections/VectorFactory.h"
 
 namespace atlas::client {
 
@@ -21,9 +22,10 @@ namespace atlas::client {
         ~VectorClientImpl() override = default;
 
         auto doSomethingWithLargeVector() ->void  override{
+
             auto v = factory->createAndFillVector(INT_MAX/4);
             for (int i = 0; i < 3; ++i) {
-                //std::cout << v->at(i) << std::endl;
+                std::cout << v->at(i) << std::endl;
             }
         }
     };

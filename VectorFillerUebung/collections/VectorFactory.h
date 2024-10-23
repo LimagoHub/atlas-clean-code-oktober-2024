@@ -15,7 +15,7 @@ namespace atlas::collection {
 
     public:
        virtual ~VectorFactory() = default;
-       virtual VECTOR_POINTER createAndFillVector(size_t size) = 0;
+       virtual VECTOR_POINTER createAndFillVector(const size_t size) = 0;
 
 
     };
