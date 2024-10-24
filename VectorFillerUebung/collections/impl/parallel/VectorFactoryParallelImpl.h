@@ -39,7 +39,7 @@ namespace atlas::collection {
 
         auto initializeThreadHolder()  -> void
         {
-            threadHolder_ = std::vector<std::thread>{};
+
             threadHolder_.reserve(thread_count_);
         }
 
@@ -61,11 +61,7 @@ namespace atlas::collection {
         {
             const size_t start = segment * partitionSize_;
             const size_t end = start + partitionSize_;
-            threadHolder_.emplace_back(
-                    &VectorFactoryParallelImpl::fill_segment_worker,
-                    this,
-                    start,
-                    end);
+            threadHolder_.emplace_back(&VectorFactoryParallelImpl::fill_segment_worker, this, start,end);
         }
 
         auto fill_segment_worker( const std::size_t startIndex, const std::size_t endIndex) -> void

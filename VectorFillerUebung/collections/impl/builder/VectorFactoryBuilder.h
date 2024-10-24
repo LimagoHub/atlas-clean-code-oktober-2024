@@ -7,7 +7,7 @@
 #include "../../VectorFactory.h"
 #include "../sequential/VectorFactorySequentialImpl.h"
 #include "../parallel/VectorFactoryParallelImpl.h"
-//#include "../parallel/VectorFactoryAutoImpl.h"
+#include "../parallel/VectorFactoryAutoImpl.h"
 #include "../decorators/VectorFactoryBenchmarkDecorator.h"
 #include "../decorators/VectorFactoryLoggerDecorator.h"
 #include "../decorators/VectorFactorySecureDecorator.h"
@@ -20,7 +20,7 @@ namespace atlas::collection {
         using VECTOR_FACTORY = std::unique_ptr<atlas::collection::VectorFactory<int>>;
         using VECTOR_FACTORY_SEQUENCIAL = atlas::collection::VectorFactorySequentialImpl<int>;
         using VECTOR_FACTORY_PARALLEL = atlas::collection::VectorFactoryParallelImpl<int>;
-        //using VECTOR_FACTORY_AUTO = atlas::collection::VectorFactoryAutoImpl<int>;
+        using VECTOR_FACTORY_AUTO = atlas::collection::VectorFactoryAutoImpl<int>;
         using VECTOR_FACTORY_BENCHMARK = atlas::collection::VectorFactoryBenchmarkDecorator<int>;
         using VECTOR_FACTORY_LOGGER = atlas::collection::VectorFactoryLoggerDecorator<int>;
         using VECTOR_FACTORY_SECURE = atlas::collection::VectorFactorySecureDecorator<int>;
@@ -70,8 +70,8 @@ namespace atlas::collection {
             STOPWATCH watch = std::make_unique<atlas::time::StopwatchImpl>();
             switch(threadCount) {
                 case 0:
-                    //result = std::make_unique<VECTOR_FACTORY_AUTO>(std::move(generatorBuilder));
-                    result = std::make_unique<VECTOR_FACTORY_SEQUENCIAL>(std::move(generatorBuilder->create()));
+                    result = std::make_unique<VECTOR_FACTORY_AUTO>(std::move(generatorBuilder));
+                    //result = std::make_unique<VECTOR_FACTORY_SEQUENCIAL>(std::move(generatorBuilder->create()));
                     break;
                 case 1:
                     result = std::make_unique<VECTOR_FACTORY_SEQUENCIAL>(std::move(generatorBuilder->create()));
