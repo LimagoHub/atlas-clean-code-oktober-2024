@@ -9,7 +9,7 @@ class ThreadDemo {
 
 public:
     explicit ThreadDemo() {
-        threadHolder_.reserve(10);
+        threadHolder_.reserve(threadCount);
         srand(time(NULL));
     }
 
@@ -20,10 +20,11 @@ public:
     }
 
 private:
+    static inline const size_t threadCount{10};
     std::vector<std::thread> threadHolder_;
 
     auto startWorker() -> void {
-        for (size_t i = 0; i < 10; ++i) {
+        for (size_t i = 0; i < threadCount; ++i) {
             const long millis = rand() % 5000;
             threadHolder_.emplace_back(
                     &ThreadDemo::worker,

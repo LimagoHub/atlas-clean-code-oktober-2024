@@ -11,5 +11,6 @@ add_executable(VectorFillerUebung main.cpp
         collections/AbstractVectorFactory.h
         collections/impl/decorators/VectorFactoryBenchmarkDecorator.h
         client/impl/ClientImpl.h
-        collections/impl/builder/VectorFactoryBuilder.h
-        bootstrap/Bootstrap.h)
+        bootstrap/Bootstrap.h
+        generator/GeneratorBuilder.h
+        collections/impl/parallel/VectorFactoryParallelImpl.h)

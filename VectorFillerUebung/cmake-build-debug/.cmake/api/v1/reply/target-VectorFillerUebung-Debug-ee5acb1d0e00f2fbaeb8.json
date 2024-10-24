@@ -104,7 +104,8 @@
 				6,
 				7,
 				8,
-				9
+				9,
+				10
 			]
 		}
 	],
@@ -153,12 +154,17 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "collections/impl/builder/VectorFactoryBuilder.h",
+			"path" : "bootstrap/Bootstrap.h",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
-			"path" : "bootstrap/Bootstrap.h",
+			"path" : "generator/GeneratorBuilder.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "collections/impl/parallel/VectorFactoryParallelImpl.h",
 			"sourceGroupIndex" : 1
 		}
 	],

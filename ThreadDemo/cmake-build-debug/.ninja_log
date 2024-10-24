@@ -1,3 +1,6 @@
 # ninja log v6
 5	609	7514522176043290	CMakeFiles/ThreadDemo.dir/main.cpp.obj	52132b6dc30c7a7b
 619	1474	7514522182178694	ThreadDemo.exe	9222cb4e878221ee
+10	457	7514571965737302	build.ninja	b7ffddc61147908e
+5	1094	7514571966208935	CMakeFiles/ThreadDemo.dir/main.cpp.obj	52132b6dc30c7a7b
+1096	2348	7514571977114996	ThreadDemo.exe	9222cb4e878221ee
